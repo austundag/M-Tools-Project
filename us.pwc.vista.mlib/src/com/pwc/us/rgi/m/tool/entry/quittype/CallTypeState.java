@@ -23,7 +23,7 @@ public enum CallTypeState {
 	EXTRINSIC_VERIFIED(false),
 	DO_CONFLICTING(true),
 	EXTRINSIC_CONFLICTING(true),
-	FANOUT_CONFLICTING(true),
+	FANOUT_CONFLICTING(false),
 	INTERNAL_ERROR(true);
 	
 	private boolean conflicted;

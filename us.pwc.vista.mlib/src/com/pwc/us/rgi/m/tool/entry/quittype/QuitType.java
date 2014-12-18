@@ -221,8 +221,10 @@ public class QuitType implements ToolResult {
 			break;
 			case FANOUT_CONFLICTING:
 			{
-				String fl = ct.getLocation().toString(); 
-				t.writeFormatted("CALL", "Fanout has invalid quit type at " + fl);				
+				if (! skipEmpty) {
+					String fl = ct.getLocation().toString(); 
+					t.writeFormatted("CALL", "Fanout has invalid quit type at " + fl);				
+				}
 			}				
 			break;			
 			case DO_UNVERIFIED:
