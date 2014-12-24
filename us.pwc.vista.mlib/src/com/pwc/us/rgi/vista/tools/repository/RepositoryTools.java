@@ -122,7 +122,7 @@ public class RepositoryTools extends Tools {
 				if (ri != null) {
 					VistaPackages vps = this.getVistaPackages(ri);
 					if (vps != null) {
-						ProtocolWriter ow = new ProtocolWriter(ri, fr, params.protocolType);
+						ProtocolWriter ow = new ProtocolWriter(ri, fr, params.protocolType, params.mVersion);
 						ow.write(vps);
 					}
 				}

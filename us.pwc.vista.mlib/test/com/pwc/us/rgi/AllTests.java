@@ -23,7 +23,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	com.pwc.us.rgi.m.tool.routine.occurance.AllTests.class,	
 	com.pwc.us.rgi.vista.tools.AllTests.class, 
 	com.pwc.us.rgi.vista.tools.entry.AllTests.class, 
-	com.pwc.us.rgi.m.tool.entry.fanin.AllTests.class 
+	com.pwc.us.rgi.m.tool.entry.fanin.AllTests.class,
+	com.pwc.us.rgi.util.AllTests.class
 	})
 public class AllTests {
 }

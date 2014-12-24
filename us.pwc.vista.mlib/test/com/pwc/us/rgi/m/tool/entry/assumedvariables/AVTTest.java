@@ -2,7 +2,7 @@ package com.pwc.us.rgi.m.tool.entry.assumedvariables;
 
 import java.util.Set;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

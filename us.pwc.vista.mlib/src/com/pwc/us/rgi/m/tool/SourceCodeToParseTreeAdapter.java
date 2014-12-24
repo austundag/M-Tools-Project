@@ -35,10 +35,6 @@ public class SourceCodeToParseTreeAdapter implements ParseTreeSupply {
 	private boolean inError = false;
 	private MVersion version;
 	
-	public SourceCodeToParseTreeAdapter(SourceCodeSupply sourceCodeSupply) {
-		this(sourceCodeSupply, MVersion.CACHE);
-	}
-	
 	public SourceCodeToParseTreeAdapter(SourceCodeSupply sourceCodeSupply, MVersion version) {
 		this.sourceCodeSupply = sourceCodeSupply;
 		this.version = version;

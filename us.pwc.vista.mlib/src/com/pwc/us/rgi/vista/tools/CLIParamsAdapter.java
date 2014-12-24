@@ -22,7 +22,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import com.pwc.us.rgi.m.token.MVersion;
 import com.pwc.us.rgi.m.tool.NamespaceFilter;
 import com.pwc.us.rgi.m.tool.OutputFlags;
 import com.pwc.us.rgi.m.tool.ParseTreeSupply;
@@ -68,7 +67,7 @@ public class CLIParamsAdapter {
 		}		
 		if ((params.parseTreeDirectory == null) || params.parseTreeDirectory.isEmpty()) {
 			SourceCodeSupply supply = CLIParamsAdapter.getSourceCodeSupply(params);
-			CLIParamsAdapter.parseTreeSupply = new SourceCodeToParseTreeAdapter(supply);
+			CLIParamsAdapter.parseTreeSupply = new SourceCodeToParseTreeAdapter(supply, params.mVersion);
 			return CLIParamsAdapter.parseTreeSupply;
 		} else {
 			CLIParamsAdapter.parseTreeSupply = new SavedParsedTrees(params.parseTreeDirectory);
@@ -77,7 +76,7 @@ public class CLIParamsAdapter {
 	}
 	
 	public static RepositoryInfo getRepositoryInfo(CLIParams params) {
-		MRARoutineFactory rf = MRARoutineFactory.getInstance(MVersion.CACHE);
+		MRARoutineFactory rf = MRARoutineFactory.getInstance(params.mVersion);
 		if (rf != null) {
 			RepositoryInfo ri = RepositoryInfo.getInstance(rf);
 			if (ri != null) {

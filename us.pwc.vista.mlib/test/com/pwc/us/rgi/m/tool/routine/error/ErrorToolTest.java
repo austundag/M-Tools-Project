@@ -2,7 +2,7 @@ package com.pwc.us.rgi.m.tool.routine.error;
 
 import java.util.List;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

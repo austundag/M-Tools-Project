@@ -19,6 +19,7 @@ package com.pwc.us.rgi.vista.tools.utility;
 import java.util.Collection;
 
 import com.pwc.us.rgi.m.parsetree.Routine;
+import com.pwc.us.rgi.m.token.MVersion;
 import com.pwc.us.rgi.m.tool.ParseTreeSupply;
 import com.pwc.us.rgi.m.tool.SourceCodeSupply;
 import com.pwc.us.rgi.m.tool.SourceCodeToParseTreeAdapter;
@@ -29,15 +30,17 @@ import com.pwc.us.rgi.vista.tools.Tool;
 
 class CLIParseTreeSaveTool extends Tool {
 	private SourceCodeSupply sourceCodeSupply;
+	private MVersion mVersion;
 	
 	public CLIParseTreeSaveTool(CLIParams params) {
 		super(params);
 		this.sourceCodeSupply = CLIParamsAdapter.getSourceCodeSupply(params);
+		this.mVersion = params.mVersion;
 	}
 	
 	@Override
 	public void run() {
-		ParseTreeSupply pts = new SourceCodeToParseTreeAdapter(this.sourceCodeSupply);
+		ParseTreeSupply pts = new SourceCodeToParseTreeAdapter(this.sourceCodeSupply, this.mVersion);
 		Collection<String> routineNames = this.sourceCodeSupply.getAllRoutineNames();
 		for(String routineName : routineNames) {
 			Routine routine = pts.getParseTree(routineName);

@@ -1,7 +1,7 @@
 package com.pwc.us.rgi.m.token;
 
 import static org.junit.Assert.fail;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

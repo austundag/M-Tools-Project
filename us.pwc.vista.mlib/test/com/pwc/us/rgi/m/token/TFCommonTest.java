@@ -2,7 +2,7 @@ package com.pwc.us.rgi.m.token;
 
 import static org.junit.Assert.fail;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import com.pwc.us.rgi.m.struct.MError;
 import com.pwc.us.rgi.m.token.MList;

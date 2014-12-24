@@ -3,7 +3,7 @@ package com.pwc.us.rgi.m.token;
 import java.util.List;
 import java.util.Map;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

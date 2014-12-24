@@ -2,7 +2,7 @@ package com.pwc.us.rgi.m;
 
 import java.io.InputStream;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import com.pwc.us.rgi.m.parsetree.Routine;
 import com.pwc.us.rgi.m.struct.MRoutineContent;

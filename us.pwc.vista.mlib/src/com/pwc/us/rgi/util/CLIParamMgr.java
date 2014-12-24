@@ -17,12 +17,13 @@
 package com.pwc.us.rgi.util;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class CLIParamMgr {
-	private static void updateValues(Object target, Field positionalField, Map<String, Field> namedFields, String[] args) throws IllegalAccessException {
+	private static void updateValues(Object target, Field positionalField, Map<String, Field> namedFields, String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
 		int index = 0;
 		while (index < args.length) {
 			String arg = args[index];
@@ -38,6 +39,15 @@ public class CLIParamMgr {
 						@SuppressWarnings("unchecked")
 						List<String> v = (List<String>) f.get(target);
 						v.add(arg);
+					} else if (cls.isEnum()) {						
+			            for (Object constant : cls.getEnumConstants()) { 
+			                Enum<?> enumConstant = (Enum<?>)constant;
+			                String name = enumConstant.name();
+			                if (name.equalsIgnoreCase(arg)) {
+			                	f.set(target, enumConstant);
+			                    break;
+			                }
+			            }
 					} else {
 						f.set(target, arg);
 					}
@@ -51,7 +61,7 @@ public class CLIParamMgr {
 		}
 	}
 	
-	public static <T> void update(T target, Class<T> cls, String[] args) throws IllegalAccessException {
+	public static <T> void update(T target, Class<T> cls, String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
 		Map<String, Field> namedFields = new HashMap<String, Field>();
 		Field positionalField = null;
 		for (Field f : cls.getDeclaredFields()) {			
@@ -68,7 +78,7 @@ public class CLIParamMgr {
 		updateValues(target, positionalField, namedFields, args);		
 	}
 	
-	public static <T> T parse(Class<T> cls, String[] args) throws IllegalAccessException, InstantiationException {
+	public static <T> T parse(Class<T> cls, String[] args) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
 		T target = cls.newInstance();
 		update(target, cls, args);
 		return target;

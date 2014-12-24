@@ -795,7 +795,7 @@ public class MTFSupply {
 		switch (version) {
 			case CACHE: {
 				if (CACHE_SUPPLY == null) {
-					CACHE_SUPPLY = generateSupply(MTFSupply.class);  // QUick hack
+					CACHE_SUPPLY = generateSupply(CacheSupply.class);
 				}
 				return CACHE_SUPPLY;
 			}

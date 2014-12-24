@@ -114,11 +114,11 @@ public class RepositoryInfo {
 		private ObjectSupply<MToken> mAdapterSupply = new MObjectSupply();
 		private TokenFactory<MToken> tfLine;
 		
-		public ProtocolTransformer() {
+		public ProtocolTransformer(MVersion mversion) {
 			super();
 			
 			try {
-				tfLine = MTFSupply.getInstance(MVersion.CACHE).line; //TODO: should be set from cli args
+				tfLine = MTFSupply.getInstance(mversion).line; 
 			} catch (ParseException e) {
 				e.printStackTrace();
 			} 
@@ -328,13 +328,13 @@ public class RepositoryInfo {
 		return result;
 	}
 	
-	public List<List<EntryIdWithSource>> getProtocolEntryPoints(String protocolType) {
+	public List<List<EntryIdWithSource>> getProtocolEntryPoints(String protocolType, MVersion mversion) {
 		String root = RepositoryInfo.getLocation();
 		Path path = Paths.get(root, "Packages", "Kernel", "Globals", "101+PROTOCOL.zwr");
 		MGlobalNode rootNode = new MGlobalNode();
 		rootNode.read(path);
 		MGlobalNode node = rootNode.getNode("ORD","101");
-		List<List<EntryIdWithSource>> result = node.getValues(new ProtocolFilter(protocolType), new ProtocolTransformer());
+		List<List<EntryIdWithSource>> result = node.getValues(new ProtocolFilter(protocolType), new ProtocolTransformer(mversion));
 		return result;
 	}
 	

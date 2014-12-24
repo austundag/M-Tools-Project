@@ -25,10 +25,6 @@ import com.pwc.us.rgi.m.token.MVersion;
 public class AccumulatingParseTreeAdapter extends SourceCodeToParseTreeAdapter {
 	private Map<String, Routine> map = new HashMap<String, Routine>();
 	
-	public  AccumulatingParseTreeAdapter(SourceCodeSupply sourceCodeSupply) {
-		super(sourceCodeSupply);
-	}
-	
 	public  AccumulatingParseTreeAdapter(SourceCodeSupply sourceCodeSupply, MVersion version) {
 		super(sourceCodeSupply, version);
 	}

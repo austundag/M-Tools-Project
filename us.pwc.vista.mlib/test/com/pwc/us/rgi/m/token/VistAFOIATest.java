@@ -21,7 +21,7 @@ import com.pwc.us.rgi.parsergen.ParseException;
 import com.pwc.us.rgi.vista.repository.FileSupply;
 import com.pwc.us.rgi.vista.tools.ErrorExemptions;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class VistAFOIATest {
 	@Test

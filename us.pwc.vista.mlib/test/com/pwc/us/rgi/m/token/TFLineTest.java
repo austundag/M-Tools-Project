@@ -2,7 +2,7 @@ package com.pwc.us.rgi.m.token;
 
 import java.util.Arrays;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

@@ -25,6 +25,7 @@ import java.util.Map;
 
 import com.pwc.us.rgi.m.parsetree.data.EntryId;
 import com.pwc.us.rgi.m.parsetree.data.EntryIdWithSource;
+import com.pwc.us.rgi.m.token.MVersion;
 import com.pwc.us.rgi.output.FileTerminal;
 import com.pwc.us.rgi.vista.repository.RepositoryInfo;
 import com.pwc.us.rgi.vista.repository.VistaPackage;
@@ -35,16 +36,18 @@ public class ProtocolWriter {
 	private RepositoryInfo repositoryInfo;
 	private FileTerminal fileWrapper;
 	private String protocolType;
+	private MVersion mversion;
 	
-	public ProtocolWriter(RepositoryInfo repositoryInfo, FileTerminal fileWrapper, String protocolType) {
+	public ProtocolWriter(RepositoryInfo repositoryInfo, FileTerminal fileWrapper, String protocolType, MVersion mversion) {
 		this.repositoryInfo = repositoryInfo;
 		this.fileWrapper = fileWrapper;
 		this.protocolType = protocolType;
+		this.mversion = mversion;
 	}
 		
 	public void write(VistaPackages vps) {
 		List<VistaPackage> packages = this.repositoryInfo.getAllPackages(); 
-		List<List<EntryIdWithSource>> protocolsMVL = this.repositoryInfo.getProtocolEntryPoints(protocolType); //multi value list
+		List<List<EntryIdWithSource>> protocolsMVL = this.repositoryInfo.getProtocolEntryPoints(protocolType, mversion); //multi value list
 		Map<String, List<EntryIdWithSource>> protocolsByPackage = new HashMap<String, List<EntryIdWithSource>>();
 		for (VistaPackage p : packages) {
 			String name = p.getPackageName();

@@ -2,7 +2,7 @@ package com.pwc.us.rgi.parsergen.ruledef;
 
 import static org.junit.Assert.*;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

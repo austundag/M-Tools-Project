@@ -36,10 +36,12 @@ import com.pwc.us.rgi.vista.tools.Tool;
 
 abstract class CLIRoutineTool extends Tool {
 	private OutputFlags ofs;
+	private MVersion mVersion;
 	
 	public CLIRoutineTool(CLIParams params) {
 		super(params);
 		this.ofs = CLIParamsAdapter.toOutputFlags(params);
+		this.mVersion = params.mVersion;
 	}
 	
 	private List<Path> getMFiles() {
@@ -75,7 +77,7 @@ abstract class CLIRoutineTool extends Tool {
 	}
 	
 	protected List<Routine> getRoutines() {
-		MRARoutineFactory rf = MRARoutineFactory.getInstance(MVersion.CACHE);
+		MRARoutineFactory rf = MRARoutineFactory.getInstance(this.mVersion);
 		if (rf != null) {
 			List<Path> paths = this.getMFiles();
 			if (paths != null) {

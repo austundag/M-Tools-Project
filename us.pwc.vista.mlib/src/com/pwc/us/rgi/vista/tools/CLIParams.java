@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.pwc.us.rgi.m.token.MVersion;
 import com.pwc.us.rgi.util.CLIParamMgr;
 import com.pwc.us.rgi.util.CLIParameter;
 
@@ -97,6 +98,9 @@ public class CLIParams {
 	
 	@CLIParameter(names={"--occurance"})
 	public List<String> occuranceType = new ArrayList<String>();
+	
+	@CLIParameter(names={"-mv", "--mversion"})
+	public MVersion mVersion = MVersion.CACHE;
 	
 	private static void logError(String msg) {
 		Logger logger = Logger.getLogger(MRoutineAnalyzer.class.getName());		
